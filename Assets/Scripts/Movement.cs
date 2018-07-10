@@ -16,7 +16,7 @@ public class Movement : MonoBehaviour {
 	private SteamVR_TrackedObject trackedObj;
 	private SteamVR_TrackedController trackedController;
 
-	public GameObject rightHand, teleportPoint, teleportation, miningVehicle;
+	public GameObject rightHand, teleportPoint, teleportation, miningVehicle, tip;
 
 	//Audio Stuff
 	public AudioSource idlingSound, startSound, drivingSound, stoppingSound;
@@ -48,6 +48,9 @@ public class Movement : MonoBehaviour {
 				Destroy(teleportPoint); //so point doesn't show up when pressing track pad
 				GetComponent<Rigidbody>().isKinematic = false; //forces can now affect movement (i.e. gravity)
 
+				//Driving tip
+				tip.SetActive(true);
+
 				StartCoroutine(Audio());
 			}
 			return; //prevent the rest of codes execution until in vehicle
@@ -75,7 +78,7 @@ public class Movement : MonoBehaviour {
 				LastDirection = Direction.backward;
 			}
 
-			if (speed < 0.075f) //this is the max speed for the vehicle
+			if (speed < 0.1f) //this is the max speed for the vehicle
 				speed += 0.001f; //acceleration
 
 
@@ -114,7 +117,6 @@ public class Movement : MonoBehaviour {
 		
 		while (true) {
 			yield return new WaitForFixedUpdate();
-			Debug.Log(!driving +"       "+ drivingSound.isPlaying);
 			if (driving && !drivingSound.isPlaying) {
 				drivingSound.Play();
 				if(stoppingSound.isPlaying)
