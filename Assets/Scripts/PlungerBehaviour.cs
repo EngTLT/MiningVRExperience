@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class PlungerBehaviour : MonoBehaviour {
 	public GameObject lcontroller, rcontroller, rDoor, lDoor;
@@ -8,9 +9,9 @@ public class PlungerBehaviour : MonoBehaviour {
 	SteamVR_TrackedController controller;
 	bool handled = false, controllersTrigger = true;
 	ParticleSystem explo;
-	
 
-	public GameObject explosion, box, video;
+	public GameObject explosion, box;
+	public VideoPlayer video1, video2;
 
 	void Update() {
 		if (transform.localPosition.y < 11.495) {
@@ -19,6 +20,7 @@ public class PlungerBehaviour : MonoBehaviour {
 			if (explosion != null) 
 				explo.Play();
 
+			StartCoroutine(Explosion());
 
 		}
 		if (transform.localPosition.y < 11.624) {
@@ -44,6 +46,8 @@ public class PlungerBehaviour : MonoBehaviour {
 	int count = 0;
 
 	void Start() {
+		video1.Play(); //play preexplosion on a loop
+
 		rb = GetComponent<Rigidbody>();
 		explo = explosion.GetComponent<ParticleSystem>();
 	}
@@ -71,5 +75,15 @@ public class PlungerBehaviour : MonoBehaviour {
 				transform.position = new Vector3(transform.position.x, controller.transform.position.y, transform.position.z);
 			}
 		}
+	}
+
+	IEnumerator Explosion() {
+		video1.Pause();
+		video2.Play();
+
+
+		SteamVR_Controller.Input(lcontroller.GetComponent<SteamVR_TrackedController>().GetInstanceID()).TriggerHapticPulse(2000);
+		SteamVR_Controller.Input(rcontroller.GetComponent<SteamVR_TrackedController>().GetInstanceID()).TriggerHapticPulse(2000);
+		yield return null;
 	}
 }
