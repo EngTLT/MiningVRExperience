@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour {
 
@@ -16,7 +17,7 @@ public class Movement : MonoBehaviour {
 	private SteamVR_TrackedObject trackedObj;
 	private SteamVR_TrackedController trackedController;
 
-	public GameObject rightHand, teleportPoint, teleportation, miningVehicle, tip;
+	public GameObject rightHand, teleportPoint, teleportation, miningVehicle;
 
 	//Audio Stuff
 	public AudioSource idlingSound, startSound, drivingSound, stoppingSound;
@@ -38,6 +39,9 @@ public class Movement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		if (transform.position.x < 375)
+			SceneManager.LoadScene("Hub");
+
 		//Check until player is in vehicle before allowing vehicle movement
 		if (!inVehicle) {
 			if (Vector3.Distance(teleportPoint.transform.position, transform.position) < 2) {
@@ -47,9 +51,6 @@ public class Movement : MonoBehaviour {
 				Destroy(teleportation); //get rid of teleportation (teleportation should be the prefab that allows teleporting in SteamVR)
 				Destroy(teleportPoint); //so point doesn't show up when pressing track pad
 				GetComponent<Rigidbody>().isKinematic = false; //forces can now affect movement (i.e. gravity)
-
-				//Driving tip
-				tip.SetActive(true);
 
 				StartCoroutine(Audio());
 			}
@@ -95,10 +96,10 @@ public class Movement : MonoBehaviour {
 		} //END _____________________1
 
 		if (LastDirection == Direction.forward) {
-			transform.position = transform.position + transform.forward.normalized * speed;
+			transform.position = transform.position + transform.forward.normalized * speed * Time.deltaTime * 40;
 		}
 		else if (LastDirection == Direction.backward) {
-			transform.position = transform.position + transform.forward.normalized * -speed/3; //reverse at fraction of forward speed
+			transform.position = transform.position + transform.forward.normalized * -speed/3 * Time.deltaTime * 40; //reverse at fraction of forward speed
 		}
 
 		if (!(forward || backward) && speed > 0) {

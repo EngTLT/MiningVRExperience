@@ -378,7 +378,7 @@ namespace Valve.VR.InteractionSystem
 
 
 		//-------------------------------------------------
-		private void ShowButtonHint( params EVRButtonId[] buttons )
+		public void ShowButtonHint( params EVRButtonId[] buttons )
 		{
 			renderModel.gameObject.SetActive( true );
 
@@ -423,7 +423,7 @@ namespace Valve.VR.InteractionSystem
 
 
 		//-------------------------------------------------
-		private void HideButtonHint( params EVRButtonId[] buttons )
+		public void HideButtonHint( params EVRButtonId[] buttons )
 		{
 			Color baseColor = controllerMaterial.GetColor( colorID );
 			for ( int i = 0; i < buttons.Length; i++ )
