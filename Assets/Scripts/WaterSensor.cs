@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WaterSensor : MonoBehaviour {
 	public GameObject skull, boat;
@@ -15,11 +16,6 @@ public class WaterSensor : MonoBehaviour {
 	void Start () {
 		StartCoroutine(ReadWater());
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
 	void OnTriggerEnter(Collider collider) {
 		if (collider.tag == "Controller")
@@ -27,7 +23,6 @@ public class WaterSensor : MonoBehaviour {
 	}
 
 	void OnTriggerExit(Collider collider) {
-		//transform.parent = boat.transform;
 		controller = null;
 	}
 
@@ -43,7 +38,6 @@ public class WaterSensor : MonoBehaviour {
 				if (count > 10) {
 					count = 0;
 					manipulated = false;
-					//transform.parent = boat.transform;
 				}
 			}
 			else if (controller.triggerPressed) {
@@ -74,6 +68,9 @@ public class WaterSensor : MonoBehaviour {
 		niceTerrain.SetActive(true);
 		badTerrain.SetActive(false);
 		SteamVR_Fade.Start(Color.clear, 4, true);
+
+		yield return new WaitForSeconds(10);
+		SceneManager.LoadScene("Hub");
 	}
 
 }
