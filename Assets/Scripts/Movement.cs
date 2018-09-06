@@ -23,6 +23,8 @@ public class Movement : MonoBehaviour {
 	public AudioSource idlingSound, startSound, drivingSound, stoppingSound;
 	bool driving; //is player driving forward?
 
+    public GameObject[] path;
+
 	void Start() {
 		inVehicle = false;
 		driving = false;
