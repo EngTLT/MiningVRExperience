@@ -28307,7 +28307,7 @@ Transform:
   m_GameObject: {fileID: 1092460258}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -0, y: 0, z: 0.0859}
-  m_LocalScale: {x: 0.10000005, y: 0.10000002, z: 1}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 1}
   m_Children: []
   m_Father: {fileID: 1692612899}
   m_RootOrder: 7
@@ -28321,12 +28321,12 @@ TextMesh:
   m_GameObject: {fileID: 1092460258}
   m_Text: Contents
   m_OffsetZ: 0
-  m_CharacterSize: 0.1
+  m_CharacterSize: 1
   m_LineSpacing: 1
   m_Anchor: 4
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 0
+  m_FontSize: 24
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 0}
@@ -42714,7 +42714,7 @@ Transform:
   m_GameObject: {fileID: 1681576911}
   m_LocalRotation: {x: 0, y: 0.9931605, z: -0.116757356, w: 0}
   m_LocalPosition: {x: 0, y: -0.0007, z: 0.073}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 1}
   m_Children: []
   m_Father: {fileID: 598340623}
   m_RootOrder: 7
@@ -42728,12 +42728,12 @@ TextMesh:
   m_GameObject: {fileID: 1681576911}
   m_Text: Contents
   m_OffsetZ: 0
-  m_CharacterSize: 0.1
+  m_CharacterSize: 1
   m_LineSpacing: 1
   m_Anchor: 4
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 0
+  m_FontSize: 24
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 0}
