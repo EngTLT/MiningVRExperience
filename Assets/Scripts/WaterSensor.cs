@@ -12,7 +12,6 @@ public class WaterSensor : MonoBehaviour {
 
 	int count = 0;
 
-	// Use this for initialization
 	void Start () {
 		StartCoroutine(ReadWater());
 	}

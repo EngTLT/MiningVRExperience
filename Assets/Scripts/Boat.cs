@@ -4,14 +4,8 @@ using UnityEngine;
 
 public class Boat : MonoBehaviour {
 
-	// Use this for initialization
 	void Start () {
 		StartCoroutine(MoveToLakeCenter());
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 
 	IEnumerator MoveToLakeCenter() {
