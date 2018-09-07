@@ -14,6 +14,8 @@ public class PlungerBehaviour : MonoBehaviour {
 	public GameObject explosion, box;
 	public VideoPlayer video1;
 
+    public AudioSource fireInTheHole;
+
 	void Update() {
 		if (transform.localPosition.y < 11.495) {
 			transform.localPosition = new Vector3(transform.localPosition.x, 11.495f, transform.localPosition.z);
@@ -79,6 +81,7 @@ public class PlungerBehaviour : MonoBehaviour {
 	//}
 
 	IEnumerator Explosion() {
+        fireInTheHole.Play();
 		video1.Play();
 		yield return new WaitForSeconds(0.5f);
 		
