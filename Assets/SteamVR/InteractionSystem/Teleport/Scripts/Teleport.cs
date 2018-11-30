@@ -645,8 +645,8 @@ namespace Valve.VR.InteractionSystem
 
 			foreach ( TeleportMarkerBase teleportMarker in teleportMarkers )
 			{
-				if ( teleportMarker != null && teleportMarker.markerActive && teleportMarker.gameObject != null )
-				{
+                if (teleportMarker != null && teleportMarker.markerActive && teleportMarker.gameObject != null && !(teleportMarker is TeleportPoint))
+                {
 					teleportMarker.gameObject.SetActive( false );
 				}
 			}
@@ -775,7 +775,8 @@ namespace Valve.VR.InteractionSystem
 			//Tint color for the teleport points
 			foreach ( TeleportMarkerBase teleportMarker in teleportMarkers )
 			{
-				teleportMarker.SetAlpha( fullTintAlpha * meshAlphaPercent, meshAlphaPercent );
+                if (!(teleportMarker is TeleportPoint))
+                    teleportMarker.SetAlpha( fullTintAlpha * meshAlphaPercent, meshAlphaPercent );
 			}
 		}
 
