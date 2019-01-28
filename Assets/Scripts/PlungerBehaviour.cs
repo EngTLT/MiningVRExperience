@@ -96,6 +96,9 @@ public class PlungerBehaviour : MonoBehaviour {
 			yield return new WaitForSeconds(0.01f);
 		}
 		camrig.rotation = Quaternion.Euler(new Vector3(0, -90, 0));
+        NarrationManager.instance.PlayClip(4);
+        while (NarrationManager.instance.GetComponent<AudioSource>().isPlaying)
+            yield return new WaitForEndOfFrame();
 		yield return new WaitForSeconds(5);
 		SceneManager.LoadScene("Hub");
 	}

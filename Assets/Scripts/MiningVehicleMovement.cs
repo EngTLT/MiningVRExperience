@@ -117,6 +117,7 @@ public class MiningVehicleMovement : MonoBehaviour {
 		yield return new WaitForSeconds(2.7f);
 
 		idlingSound.Play();
+        NarrationManager.instance.PlayClip(1);
 		
 		while (true) {
 			yield return new WaitForFixedUpdate();
@@ -133,7 +134,7 @@ public class MiningVehicleMovement : MonoBehaviour {
 	}
 
 	IEnumerator PlaceTeleportPointinVehicle() {
-		yield return new WaitForSeconds(3); //wait until intro is finished
+		yield return new WaitForSeconds(15); //wait until intro is finished
 		teleportPoint.SetActive(true);
 	}
 

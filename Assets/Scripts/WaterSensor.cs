@@ -67,9 +67,13 @@ public class WaterSensor : MonoBehaviour {
 		niceTerrain.SetActive(true);
 		badTerrain.SetActive(false);
 		SteamVR_Fade.Start(Color.clear, 4, true);
-
-		yield return new WaitForSeconds(10);
-		SceneManager.LoadScene("Hub");
+        
+		yield return new WaitForSeconds(4);
+        NarrationManager.instance.PlayClip(3);
+        while (NarrationManager.instance.GetComponent<AudioSource>().isPlaying)
+            yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("Hub");
 	}
 
 }

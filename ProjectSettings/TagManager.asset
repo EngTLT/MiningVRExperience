@@ -8,6 +8,7 @@ TagManager:
   - Potion
   - Interactable
   - Controller
+  - Vehicle
   layers:
   - Default
   - TransparentFX
